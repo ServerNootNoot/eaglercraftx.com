@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="EaglercraftX - Redirect or Continue">
+    <meta property="og:title" content="eaglercraftx.com - Redirect">
+    <meta property="og:url" content="https://eaglercraftx.com/">
+    <meta property="og:type" content="website">
+    <meta name="author" content="therealserver">
+    <title>eaglercraftx.com - Redirect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="theme-switcher" id="themeSwitcher">Switch Theme</div>
+    <div class="container">
+        <div class="box">
+            <h2>If you reached this site by mistake...</h2>
+            <p>You may have made a typo. Please visit <a href="https://eaglercraft.com" rel="nofollow" target="_blank">eaglercraft.com</a></p>
+        </div>
+        <div class="box">
+            <h2>Continue to</h2>
+            <p><a href="https://eaglercraft.dev" target="_blank">eaglercraft.dev</a></p>
+        </div>
+    </div>
+    <script>
+        const themeSwitcher = document.getElementById('themeSwitcher');
+        let darkMode = true;
+
+        themeSwitcher.addEventListener('click', () => {
+            darkMode = !darkMode;
+            if (darkMode) {
+                document.documentElement.style.setProperty('--bg-color-dark', '#1a1a1a');
+                document.documentElement.style.setProperty('--text-color-dark', '#f0f0f0');
+            } else {
+                document.documentElement.style.setProperty('--bg-color-dark', '#f0f0f0');
+                document.documentElement.style.setProperty('--text-color-dark', '#1a1a1a');
+            }
+        });
+        document.querySelectorAll('.box').forEach(box => {
+            box.addEventListener('mousemove', (e) => {
+                const boxRect = box.getBoundingClientRect();
+                const xPos = (e.clientX - boxRect.left) / boxRect.width;
+                const yPos = (e.clientY - boxRect.top) / boxRect.height;
+                box.style.backgroundImage = `radial-gradient(circle at ${xPos * 100}% ${yPos * 100}%, rgba(255,255,255,0.15), transparent)`;
+            });
+
+            box.addEventListener('mouseleave', () => {
+                box.style.backgroundImage = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
