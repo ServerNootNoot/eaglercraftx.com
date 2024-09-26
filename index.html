@@ -12,31 +12,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="theme-switcher" id="themeSwitcher">Switch Theme</div>
+    <div class="theme-switcher" id="themeSwitcher">Light Mode</div>
     <div class="container">
         <div class="box">
             <h2>If you reached this site by mistake...</h2>
             <p>You may have made a typo. Please visit <a href="https://eaglercraft.com" rel="nofollow" target="_blank">eaglercraft.com</a></p>
         </div>
+
         <div class="box">
-            <h2>Continue to</h2>
-            <p><a href="https://eaglercraft.dev" target="_blank">eaglercraft.dev</a></p>
+            <h2>Continue to...</h2>
+            <p><a href="https://eaglercraft.dev/" target="_blank">eaglercraft.dev</a></p>
         </div>
     </div>
-    <script>
-        const themeSwitcher = document.getElementById('themeSwitcher');
-        let darkMode = true;
 
-        themeSwitcher.addEventListener('click', () => {
-            darkMode = !darkMode;
-            if (darkMode) {
+    <script>
+        const tS = document.getElementById('themeSwitcher');
+        let dM = true;
+
+        function k() {
+            tS.textContent = dM ? 'Light Mode' : 'Dark Mode';
+        }
+
+        tS.addEventListener('click', () => {
+            dM = !dM;
+            if (dM) {
                 document.documentElement.style.setProperty('--bg-color-dark', '#1a1a1a');
                 document.documentElement.style.setProperty('--text-color-dark', '#f0f0f0');
             } else {
                 document.documentElement.style.setProperty('--bg-color-dark', '#f0f0f0');
                 document.documentElement.style.setProperty('--text-color-dark', '#1a1a1a');
             }
+            k();
         });
+        k();
+        
         document.querySelectorAll('.box').forEach(box => {
             box.addEventListener('mousemove', (e) => {
                 const boxRect = box.getBoundingClientRect();
